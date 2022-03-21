@@ -54,6 +54,7 @@ tar_stan_compile <- function(
   dir = NULL,
   pedantic = FALSE,
   include_paths = NULL,
+  user_header = NULL,
   cpp_options = list(),
   stanc_options = list(),
   force_recompile = FALSE,
@@ -78,6 +79,7 @@ tar_stan_compile <- function(
     dir = dir,
     pedantic = pedantic,
     include_paths = include_paths,
+    user_header = user_header,
     cpp_options = cpp_options,
     stanc_options = stanc_options,
     force_recompile = force_recompile,
@@ -102,6 +104,7 @@ tar_stan_compile_raw <- function(
   dir,
   pedantic,
   include_paths,
+  user_header,
   cpp_options,
   stanc_options,
   force_recompile,
@@ -123,6 +126,7 @@ tar_stan_compile_raw <- function(
     dir = dir,
     pedantic = pedantic,
     include_paths = include_paths,
+    user_header = user_header,
     cpp_options = cpp_options,
     stanc_options = stanc_options,
     force_recompile = force_recompile
@@ -164,6 +168,7 @@ tar_stan_compile_command <- function(
     dir = dir,
     pedantic = pedantic,
     include_paths = include_paths,
+    user_header = user_header,
     cpp_options = cpp_options,
     stanc_options = stanc_options,
     force_recompile = force_recompile
@@ -194,6 +199,7 @@ tar_stan_compile_run <- function(
   dir = NULL,
   pedantic = FALSE,
   include_paths = NULL,
+  user_header = NULL,
   cpp_options = list(),
   stanc_options = list(),
   force_recompile = FALSE
@@ -212,6 +218,7 @@ tar_stan_compile_run <- function(
     dir = dir,
     pedantic = pedantic,
     include_paths = include_paths,
+    user_header = user_header,
     cpp_options = cpp_options,
     stanc_options = stanc_options,
     force_recompile = force_recompile
