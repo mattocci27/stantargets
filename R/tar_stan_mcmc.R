@@ -133,7 +133,6 @@ tar_stan_mcmc <- function(
   window = NULL,
   fixed_param = FALSE,
   sig_figs = NULL,
-  validate_csv = TRUE,
   show_messages = TRUE,
   variables = NULL,
   inc_warmup = FALSE,
@@ -245,7 +244,6 @@ tar_stan_mcmc <- function(
     window = window,
     fixed_param = fixed_param,
     sig_figs = sig_figs,
-    validate_csv = validate_csv,
     show_messages = show_messages,
     variables = variables,
     inc_warmup = inc_warmup
@@ -404,6 +402,7 @@ tar_stan_mcmc_run <- function(
   parallel_chains,
   chain_ids,
   threads_per_chain,
+  opencl_ids,
   iter_warmup,
   iter_sampling,
   save_warmup,
@@ -420,7 +419,6 @@ tar_stan_mcmc_run <- function(
   window,
   fixed_param,
   sig_figs,
-  validate_csv,
   show_messages,
   variables,
   inc_warmup
@@ -451,7 +449,6 @@ tar_stan_mcmc_run <- function(
   if (is.null(seed)) {
     seed <- abs(targets::tar_seed()) + 1L
   }
-  stan_data <- data
   stan_data$.join_data <- NULL
   fit <- model$sample(
     data = stan_data,
@@ -481,7 +478,6 @@ tar_stan_mcmc_run <- function(
     window = window,
     fixed_param = fixed_param,
     sig_figs = sig_figs,
-    validate_csv = validate_csv,
     show_messages = show_messages
   )
   # Load all the data and return the whole unserialized fit object:

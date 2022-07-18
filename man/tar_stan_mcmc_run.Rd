@@ -26,6 +26,7 @@ tar_stan_mcmc_run(
   parallel_chains,
   chain_ids,
   threads_per_chain,
+  opencl_ids,
   iter_warmup,
   iter_sampling,
   save_warmup,
@@ -42,7 +43,6 @@ tar_stan_mcmc_run(
   window,
   fixed_param,
   sig_figs,
-  validate_csv,
   show_messages,
   variables,
   inc_warmup
@@ -170,7 +170,7 @@ written to CSV is controlled by the user's CmdStan installation and not
 CmdStanR (for some algorithms no content may be written). The default
 is \code{FALSE}, which is appropriate for almost every use case. To save the
 temporary files created when \code{save_latent_dynamics=TRUE} see the
-\code{\link[cmdstanr:fit-method-save_output_files]{$save_latent_dynamics_files()}}
+\code{\link[cmdstanr:fit-method-save_latent_dynamics_files]{$save_latent_dynamics_files()}}
 method.}
 
 \item{output_dir}{(string) A path to a directory where CmdStan should write
@@ -211,6 +211,11 @@ run in parallel. The actual number of CPU cores used is
 \code{parallel_chains*threads_per_chain}. For an example of using threading see
 the Stan case study
 \href{https://mc-stan.org/users/documentation/case-studies/reduce_sum_tutorial.html}{Reduce Sum: A Minimal Example}.}
+
+\item{opencl_ids}{(integer vector of length 2) The platform and
+device IDs of the OpenCL device to use for fitting. The model must
+be compiled with \code{cpp_options = list(stan_opencl = TRUE)} for this
+argument to have an effect.}
 
 \item{iter_warmup}{(positive integer) The number of warmup iterations to run
 per chain. Note: in the CmdStan User's Guide this is referred to as
@@ -288,8 +293,6 @@ when storing the output values. By default, CmdStan represent the output
 values with 6 significant figures. The upper limit for \code{sig_figs} is 18.
 Increasing this value will result in larger output CSV files and thus an
 increased usage of disk space.}
-
-\item{validate_csv}{Deprecated and will be removed in a future release.}
 
 \item{show_messages}{(logical) When \code{TRUE} (the default), prints all
 informational messages, for example rejection of the current proposal.
