@@ -463,7 +463,7 @@ tar_stan_mcmc_run <- function(
     chains = chains,
     parallel_chains = parallel_chains,
     chain_ids = chain_ids,
-    threads_per_chain = theads_per_chain,
+    threads_per_chain = threads_per_chain,
     opencl_ids = opencl_ids,
     iter_warmup = iter_warmup,
     iter_sampling = iter_sampling,
