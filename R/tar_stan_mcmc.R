@@ -228,6 +228,7 @@ tar_stan_mcmc <- function(
     parallel_chains = parallel_chains,
     chain_ids = chain_ids,
     threads_per_chain = threads_per_chain,
+    opencl_ids = opencl_ids,
     iter_warmup = iter_warmup,
     iter_sampling = iter_sampling,
     save_warmup = save_warmup,
